@@ -2,11 +2,11 @@ require 'test_helper'
 
 class RecordsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @record = records(:one)
+    @record = Record.create(names: 'Test', lastnames: 'Last_TEst', phone: '3234545')
   end
 
   test "should get index" do
-    get records_url
+    get root_url
     assert_response :success
   end
 
@@ -17,7 +17,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create record" do
     assert_difference('Record.count') do
-      post records_url, params: { record: { lastnames: @record.lastnames, names: @record.names, phone: @record.phone } }
+      post records_url, params: { record: { lastnames: "#{@record.lastnames}s", names: @record.names, phone: "#{@record.phone}45" } }
     end
 
     assert_redirected_to record_url(Record.last)
@@ -34,7 +34,7 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update record" do
-    patch record_url(@record), params: { record: { lastnames: @record.lastnames, names: @record.names, phone: @record.phone } }
+    patch record_url(@record), params: { record: { lastnames: @record.lastnames, names: @record.names, phone: "2#{@record.phone}" } }
     assert_redirected_to record_url(@record)
   end
 
@@ -43,6 +43,6 @@ class RecordsControllerTest < ActionDispatch::IntegrationTest
       delete record_url(@record)
     end
 
-    assert_redirected_to records_url
+    assert_redirected_to root_url
   end
 end
