@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Names:</strong>
+  <%= @record.names %>
+</p>
+
+<p>
+  <strong>Lastnames:</strong>
+  <%= @record.lastnames %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @record.phone %>
+</p>
+
+<%= link_to 'Edit', edit_record_path(@record) %> |
+<%= link_to 'Back', root_path %>

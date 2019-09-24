@@ -1,0 +1,6 @@
+<p id="notice"><%= notice %></p>
+<h1>Records</h1>
+<%= react_component("Table", { data: @records.to_json }) %>
+<br>
+
+<%= link_to 'New Record', new_record_path %>
